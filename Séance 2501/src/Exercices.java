@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class Exercices {
 
 	public static void main(String[] args) {
@@ -8,11 +9,11 @@ public class Exercices {
 		Scanner sc = new Scanner(System.in);
 		String s = sc.nextLine();
 		System.out.println(Exercice1_printCapitalized(s));
-		 
-		System.out.println(NumberOfRolling(7));
-		*/
+		 */
+		//System.out.println(NumberOfRolling(2));
 		
-		Quizz();
+		AverageForEachTotal();
+		//Quizz();
 
 	}
 	
@@ -47,9 +48,28 @@ public class Exercices {
 			b = (int)(Math.random()*6)+1;
 			
 			++compte;
-			System.out.println(a + "et" + b);
+			//System.out.println(a + "et" + b);
 		}
 		return compte;
+	}
+	public static double AverageNumberOfRolls (int total, int n){
+		
+		int[] rolls = new int[total];
+		double average = 0;
+		for (int i = 0; i < total; i++){
+			rolls[i] = NumberOfRolling(n);
+			average = average + rolls[i];
+		}
+		average = average / total;
+		return average;
+	}
+	
+	public static void AverageForEachTotal(){
+		double average;
+		for(int i = 2; i <= 12; i++){
+			average = AverageNumberOfRolls(10000,i);
+			System.out.println("Total On Dice : " + i + ", Average Number Of Rolls : " + average);
+		}
 	}
 	
 	public static void Quizz(){
